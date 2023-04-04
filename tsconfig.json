@@ -2,11 +2,13 @@
   "extends": "@crashmax/tsconfig",
   "compilerOptions": {
     "outDir": "dist",
+    "jsx": "react-jsx",
     "types": [
-      "vite/client"
+      "vitest/globals"
     ]
   },
   "include": [
-    "src/**/*"
+    "src/*",
+    "test/*",
   ]
 }

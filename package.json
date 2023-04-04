@@ -1,5 +1,5 @@
 {
-  "name": "@zero-dependency/{{name}}",
+  "name": "@zero-dependency/react",
   "version": "0.0.0",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -32,13 +32,26 @@
   "devDependencies": {
     "@crashmax/prettier-config": "^3.2.1",
     "@crashmax/tsconfig": "^2.0.1",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/node": "^18.15.11",
+    "@types/react": "^18.0.33",
+    "@types/react-dom": "^18.0.11",
+    "@types/testing-library__jest-dom": "^5.14.5",
+    "@vitejs/plugin-react": "^3.1.0",
     "@vitest/coverage-c8": "^0.29.8",
     "@vitest/ui": "^0.29.8",
     "jsdom": "^21.1.1",
-    "typescript": "^5.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.0.3",
     "vite": "^4.2.1",
-    "vite-plugin-dts": "^2.1.0",
+    "vite-plugin-dts": "^2.2.0",
     "vitest": "^0.29.8"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0",
+    "react": ">=16.8.0"
   }
 }
