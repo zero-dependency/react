@@ -19,3 +19,10 @@ pnpm add @zero-dependency/react
 ```
 
 ## Usage
+
+```ts
+import { namedLazy } from '@zero-dependency/react'
+
+// React.lazy
+const LazyComponent = namedLazy(() => import('./LazyComponent'), 'LazyComponent')
+```
