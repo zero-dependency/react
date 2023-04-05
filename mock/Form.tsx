@@ -1,5 +1,5 @@
 import React from 'react'
-import { useForm } from '../src/use-form.js'
+import { useForm } from '../src/useForm.js'
 
 export function Form() {
   const { values, getInput, formReset } = useForm({

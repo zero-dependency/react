@@ -1,4 +1,4 @@
-import { namedLazy } from '../src/named-lazy.js'
+import { namedLazy } from '../src/namedLazy.js'
 import { render, screen, waitFor } from './utils.js'
 
 describe('namedLazy', () => {
