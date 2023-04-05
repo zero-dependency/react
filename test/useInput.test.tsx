@@ -1,4 +1,4 @@
-import { useInput } from '../src/use-input.js'
+import { useInput } from '../src/useInput.js'
 import { fireEvent, render, renderHook, screen } from './utils.js'
 
 describe('useInput', () => {

@@ -1,5 +1,5 @@
 import { Form } from '../mock/Form.js'
-import { useForm } from '../src/use-form.js'
+import { useForm } from '../src/useForm.js'
 import { fireEvent, render, renderHook, screen } from './utils.js'
 
 describe('useForm', () => {
