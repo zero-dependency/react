@@ -50,8 +50,16 @@
     "vite-plugin-dts": "^2.2.0",
     "vitest": "^0.29.8"
   },
+  "dependencies": {
+    "@zero-dependency/storage": "workspace:1.1.0"
+  },
   "peerDependencies": {
     "@types/react": ">=16.8.0",
     "react": ">=16.8.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   }
 }

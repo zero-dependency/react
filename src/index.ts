@@ -1,3 +1,5 @@
 export * from './namedLazy.js'
 export * from './useInput.js'
 export * from './useForm.js'
+export * from './useLocalStorage.js'
+export * from './useSessionStorage.js'
