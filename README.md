@@ -21,7 +21,13 @@ pnpm add @zero-dependency/react
 ## Usage
 
 ```tsx
-import { namedLazy, useInput, useForm } from '@zero-dependency/react'
+import {
+  namedLazy,
+  useInput,
+  useForm,
+  useLocalStorage,
+  useSessionStorage
+} from '@zero-dependency/react'
 
 // React.lazy
 const LazyComponent = namedLazy(() => import('./LazyComponent'), 'LazyComponent')
@@ -48,6 +54,26 @@ function Form() {
         Submit
       </button>
     </form>
+  )
+}
+
+// localStorage/sessionStorage
+interface User {
+  name: string
+}
+
+function App() {
+  const [users, setUsers, resetUsers] = useLocalStorage<User[]>('users', [])
+
+  function addUser(user: User) {
+    setUsers([...users, user])
+  }
+
+  return (
+    <div>
+      <button onClick={() => addUser({ name: 'John Doe' })}>Add</button>
+      <button onClick={() => resetUsers()}>Reset</button>
+    </div>
   )
 }
 ```
