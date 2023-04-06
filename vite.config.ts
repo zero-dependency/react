@@ -24,10 +24,16 @@ export default defineConfig({
       name
     },
     rollupOptions: {
-      external: ['react'],
+      external: [
+        'react',
+        '@zero-dependency/cookie',
+        '@zero-dependency/storage'
+      ],
       output: {
         globals: {
-          react: 'React'
+          react: 'React',
+          '@zero-dependency/cookie': 'cookie',
+          '@zero-dependency/storage': 'storage'
         }
       }
     }
