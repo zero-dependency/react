@@ -26,7 +26,8 @@ import {
   useInput,
   useForm,
   useLocalStorage,
-  useSessionStorage
+  useSessionStorage,
+  useCookie
 } from '@zero-dependency/react'
 
 // React.lazy
@@ -73,6 +74,35 @@ function App() {
     <div>
       <button onClick={() => addUser({ name: 'John Doe' })}>Add</button>
       <button onClick={() => resetUsers()}>Reset</button>
+    </div>
+  )
+}
+
+// cookie
+interface Cookie {
+  theme: 'dark' | 'light'
+}
+
+function App() {
+  const [cookies, setCookie, removeCookie] = useCookie<Cookie>({
+    attributes: {
+      maxAge: 60 * 60 * 24 * 7 // 1 week
+    }
+  })
+
+  // set initial value
+  useLayoutEffect(() => {
+    if (!cookies.theme) {
+      setCookie('theme', 'dark')
+    }
+  }, [])
+
+  return (
+    <div>
+      <h1>{cookies.theme}</h1>
+      <button onClick={() => setCookie('theme', 'dark')}>Dark</button>
+      <button onClick={() => setCookie('theme', 'light')}>Light</button>
+      <button onClick={() => removeCookie('theme')}>Remove</button>
     </div>
   )
 }
