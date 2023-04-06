@@ -1,6 +1,6 @@
 {
   "name": "@zero-dependency/react",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "type": "module",
   "types": "./dist/index.d.ts",
   "main": "./dist/index.umd.js",
