@@ -51,6 +51,7 @@
     "vitest": "^0.29.8"
   },
   "dependencies": {
+    "@zero-dependency/cookie": "workspace:1.5.0",
     "@zero-dependency/storage": "workspace:1.1.0"
   },
   "peerDependencies": {
