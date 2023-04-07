@@ -5,6 +5,9 @@ import type {
   StorageOptions
 } from '@zero-dependency/storage/dist/types.js'
 
+/**
+ * React hook for managing `localStorage`
+ */
 export function useLocalStorage<T>(
   key: string,
   initialValue: ExcludeFunction<T>,

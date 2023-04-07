@@ -6,6 +6,19 @@ import type {
   CookieOptions
 } from '@zero-dependency/cookie'
 
+/**
+ * React hook for managing cookies
+ * @example
+ * const [cookies, setCookie, removeCookie] = useCookie()
+ *
+ * // set initial value
+ * useLayoutEffect(() => {
+ *   if (!cookies.theme) {
+ *     setCookie('theme', 'dark')
+ *   }
+ * }, [])
+ * @param options Cookie options
+ */
 export function useCookie<T extends Record<string, any>>(
   options?: CookieOptions
 ) {

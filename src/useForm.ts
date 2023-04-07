@@ -1,6 +1,15 @@
 import { useCallback, useState } from 'react'
 import { KeyOf } from './types.js'
 
+/**
+ * React hook for managing form state
+ * @example
+ * const [values, getInput, formReset] = useForm({
+ *   name: '',
+ *   email: ''
+ * })
+ * @param initialValues initial values for the form
+ */
 export function useForm<T extends Record<string, string>>(initialValues: T) {
   const [values, setValues] = useState(initialValues)
 
