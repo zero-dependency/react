@@ -1,11 +1,10 @@
 import { useCallback, useRef, useState } from 'react'
 import { Cookie } from '@zero-dependency/cookie'
+import { KeyOf } from './types.js'
 import type {
   CookieDomainAttributes,
   CookieOptions
 } from '@zero-dependency/cookie'
-
-type KeyOf<T> = Extract<keyof T, string>
 
 export function useCookie<T extends Record<string, any>>(
   options?: CookieOptions

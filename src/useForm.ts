@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react'
+import { KeyOf } from './types.js'
 
 export function useForm<T extends Record<string, string>>(initialValues: T) {
   const [values, setValues] = useState(initialValues)
@@ -9,7 +10,7 @@ export function useForm<T extends Record<string, string>>(initialValues: T) {
   }, [])
 
   const getInput = useCallback(
-    (name: keyof T) => {
+    <K extends KeyOf<T>>(name: K) => {
       return {
         name,
         value: values[name],
@@ -23,5 +24,9 @@ export function useForm<T extends Record<string, string>>(initialValues: T) {
     setValues(initialValues)
   }, [])
 
-  return { values, getInput, formReset } as const
+  return [
+    values,
+    getInput,
+    formReset
+  ] as const
 }

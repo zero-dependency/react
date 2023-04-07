@@ -9,9 +9,9 @@ describe('useForm', () => {
 
   it('should be render hook', () => {
     const { result } = renderHook(() => useForm({}))
-    expect(result.current.values).toBeDefined()
-    expect(result.current.getInput).toBeDefined()
-    expect(result.current.formReset).toBeDefined()
+    expect(result.current[0]).toBeDefined()
+    expect(result.current[1]).toBeDefined()
+    expect(result.current[2]).toBeDefined()
   })
 
   it('should be render form', () => {

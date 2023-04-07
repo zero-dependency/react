@@ -2,7 +2,11 @@ import React from 'react'
 import { useForm } from '../src/useForm.js'
 
 export function Form() {
-  const { values, getInput, formReset } = useForm({
+  const [
+    values,
+    getInput,
+    formReset
+  ] = useForm({
     name: 'John',
     email: ''
   })
