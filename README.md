@@ -27,7 +27,8 @@ import {
   useForm,
   useLocalStorage,
   useSessionStorage,
-  useCookie
+  useCookie,
+  componentTree
 } from '@zero-dependency/react'
 
 // React.lazy
@@ -106,4 +107,46 @@ function App() {
     </div>
   )
 }
+
+// componentTree edge case
+import { StrictMode } from 'react'
+import { SWRConfig } from 'swr'
+import { createRoot } from 'react-dom/client'
+import App from './App'
+
+// this is a helper function to create a tree of components
+const AppTree = componentTree([
+  [StrictMode],
+  [SWRConfig, {
+    value: {
+      refreshInterval: 3000,
+      fetcher: (resource, init) => fetch(resource, init).then(res => res.json())
+    }
+  }],
+  [Routing],
+  [Layout],
+  [App]
+])
+
+const root = document.querySelector<HTMLElement>('#root')!
+createRoot(root).render(<AppTree />)
+
+// instead of
+createRoot(root).render(
+  <StrictMode>
+    <SWRConfig
+      value={{
+        refreshInterval: 3000,
+        fetcher: (resource, init) =>
+          fetch(resource, init).then(res => res.json())
+      }}
+    >
+      <Routing>
+        <Layout>
+          <App />
+        </Layout>
+      </Routing>
+    </SWRConfig>
+  </StrictMode>
+)
 ```
