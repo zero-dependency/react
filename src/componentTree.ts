@@ -8,8 +8,8 @@ export function componentTree(providers: Provider[]) {
     let currentChildren = children
 
     for (let i = lastIndex; i >= 0; i--) {
-      const [Provider, props = {}] = providers[i]!
-      currentChildren = createElement(Provider, props, currentChildren)
+      const [component, props = {}] = providers[i]!
+      currentChildren = createElement(component, props, currentChildren)
     }
 
     return currentChildren
