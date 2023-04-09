@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`componentTree > should be render component tree with children 1`] = `
+<div
+  aria-label="state"
+>
+  <h1
+    aria-label="state-initial-value"
+  >
+    hello
+  </h1>
+  <div
+    aria-label="layout"
+  >
+    <div
+      aria-label="app"
+    />
+  </div>
+</div>
+`;
+
+exports[`componentTree > should be render component tree without children 1`] = `
+<div
+  aria-label="state"
+>
+  <h1
+    aria-label="state-initial-value"
+  >
+    hello
+  </h1>
+  <div
+    aria-label="layout"
+  >
+    <div
+      aria-label="app"
+    />
+  </div>
+</div>
+`;
