@@ -3,8 +3,8 @@ import { createElement } from 'react'
 type Provider<Props = {}> = [React.ElementType, Props?]
 
 export function componentTree(providers: Provider[]) {
-  return ({ children }: { children: JSX.Element }) => {
-    let currentChildren = children
+  return ({ children }: { children?: JSX.Element }) => {
+    let currentChildren = children! // pass empty children
 
     for (let i = providers.length - 1; i >= 0; i--) {
       const [component, props = {}] = providers[i]!

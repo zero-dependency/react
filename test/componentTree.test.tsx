@@ -7,7 +7,7 @@ describe('componentTree', () => {
     expect(componentTree).toBeDefined()
   })
 
-  it('should be render component tree', () => {
+  it('should be render component tree with children', () => {
     const Tree = componentTree([[State, { initialValue: 'hello' }], [Layout]])
 
     render(
@@ -15,6 +15,17 @@ describe('componentTree', () => {
         <App />
       </Tree>
     )
+    expect(screen.getByLabelText('state')).toMatchSnapshot()
+  })
+
+  it('should be render component tree without children', () => {
+    const Tree = componentTree([
+      [State, { initialValue: 'hello' }],
+      [Layout],
+      [App]
+    ])
+
+    render(<Tree />)
     expect(screen.getByLabelText('state')).toMatchSnapshot()
   })
 })
