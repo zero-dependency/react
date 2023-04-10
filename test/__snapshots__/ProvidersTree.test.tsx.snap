@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`componentTree > should be render component tree with children 1`] = `
+exports[`ProvidersTree > should be render component tree with children 1`] = `
 <div
   aria-label="state"
 >
@@ -19,7 +19,7 @@ exports[`componentTree > should be render component tree with children 1`] = `
 </div>
 `;
 
-exports[`componentTree > should be render component tree without children 1`] = `
+exports[`ProvidersTree > should be render component tree without children 1`] = `
 <div
   aria-label="state"
 >
