@@ -2,6 +2,7 @@
   "extends": "@crashmax/tsconfig",
   "compilerOptions": {
     "outDir": "dist",
+    "preserveSymlinks": true,
     "jsx": "react-jsx",
     "types": [
       "vitest/globals"
