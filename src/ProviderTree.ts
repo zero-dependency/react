@@ -14,6 +14,9 @@ export function ProviderTree(props: {
   children?: JSX.Element
 }) {
   const providers = props.providers(providerWrapper)
+  if (!providers.length) {
+    throw new Error('ProviderTree requires at least one provider')
+  }
   return createProviderTree(providers, props.children)
 }
 

@@ -40,4 +40,14 @@ describe('ProviderTree', () => {
 
     expect(container).toMatchSnapshot()
   })
+
+  it('should be expect error when no providers are provided', () => {
+    expect(() =>
+      render(
+        ProviderTree({
+          providers: ($) => []
+        })
+      )
+    ).toThrowErrorMatchingSnapshot()
+  })
 })
