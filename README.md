@@ -28,7 +28,7 @@ import {
   useLocalStorage,
   useSessionStorage,
   useCookie,
-  ProvidersTree
+  ProviderTree
 } from '@zero-dependency/react'
 
 // React.lazy
@@ -108,7 +108,7 @@ function App() {
   )
 }
 
-// ProvidersTree edge case
+// ProviderTree edge case
 import { StrictMode } from 'react'
 import { SWRConfig } from 'swr'
 import { createRoot } from 'react-dom/client'
@@ -120,21 +120,22 @@ const root = document.querySelector<HTMLElement>('#root')!
 
 // this is a helper function to create a tree of components
 createRoot(root).render(
-  <ProvidersTree
-    providers={(wrapper) => [
-      wrapper(StrictMode),
-      wrapper(SWRConfig, {
+  <ProviderTree
+    providers={($) => [
+      $(StrictMode),
+      $(SWRConfig, {
         value: {
           refreshInterval: 3000,
           fetcher: (resource, init) =>
             fetch(resource, init).then((res) => res.json())
         }
       }),
-      wrapper(Router),
-      wrapper(Layout),
-      wrapper(App)
+      $(Router),
+      $(Layout)
     ]}
-  />
+  >
+    <App />
+  </ProviderTree>
 )
 
 // instead of

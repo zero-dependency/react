@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ProviderTree > should be expect error when no providers are provided 1`] = `"ProviderTree requires at least one provider"`;
+
+exports[`ProviderTree > should render the tree of providers 1`] = `
+<div>
+  <div
+    id="foo"
+  >
+    <div
+      id="bar"
+    >
+      <div>
+        This is App
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ProviderTree > should render the tree of providers with a single provider 1`] = `
+<div>
+  <div
+    id="single"
+  />
+</div>
+`;
+
+exports[`ProviderTree > should render the tree of providers without props 1`] = `
+<div>
+  <div>
+    <div />
+  </div>
+</div>
+`;
