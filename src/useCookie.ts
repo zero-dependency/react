@@ -22,30 +22,38 @@ import type {
 export function useCookie<T extends Record<string, any>>(
   options?: CookieOptions
 ) {
-  const cookie = useRef((options?: CookieOptions) => new Cookie(options))
-  const [cookies, setCookies] = useState<T>(() =>
-    cookie.current(options).list()
-  )
+  const cookieRef = useRef(new Cookie(options))
+  const [cookies, setCookies] = useState<T>(() => cookieRef.current.list())
 
   const set = useCallback(
     <K extends KeyOf<T>>(name: K, value: T[K]) => {
-      cookie.current(options).set(name, value)
-      setCookies(cookie.current(options).list())
+      if (get(name) === value) return
+      cookieRef.current.set(name, value)
+      setCookies(cookieRef.current.list())
     },
-    [options, setCookies]
+    [cookieRef, setCookies]
   )
 
   const remove = useCallback(
     <K extends KeyOf<T>>(name: K, attributes?: CookieDomainAttributes) => {
-      cookie.current(options).remove(name, attributes)
-      setCookies(cookie.current(options).list())
+      if (!get(name)) return
+      cookieRef.current.remove(name, attributes)
+      setCookies(cookieRef.current.list())
     },
-    [options, setCookies]
+    [cookieRef, setCookies]
+  )
+
+  const get = useCallback(
+    <K extends KeyOf<T>>(name: K) => {
+      return cookieRef.current.get(name)
+    },
+    [cookieRef]
   )
 
   return [
     cookies,
     set,
-    remove
+    remove,
+    get
   ] as const
 }

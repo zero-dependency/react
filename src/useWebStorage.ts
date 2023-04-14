@@ -1,33 +1,36 @@
 import { useCallback, useLayoutEffect, useRef, useState } from 'react'
 import { WebStorage } from '@zero-dependency/storage'
-import type { ExcludeFunction, StorageOptions } from '@zero-dependency/storage'
+import type {
+  ExcludeFunction,
+  StorageOptions
+} from '@zero-dependency/storage/dist/types.js'
 
-export function useStorage<T>(
+export function useWebStorage<T>(
   key: string,
   initialValue: ExcludeFunction<T>,
   storage: Storage,
   options?: StorageOptions<T>
 ) {
-  const webStorage = useRef<WebStorage<T>>()
+  const webStorageRef = useRef<WebStorage<T>>()
   const [value, setValue] = useState<T>()
 
   useLayoutEffect(() => {
-    webStorage.current = new WebStorage(key, initialValue, storage, options)
-    setValue(webStorage.current.values)
+    webStorageRef.current = new WebStorage(key, initialValue, storage, options)
+    setValue(webStorageRef.current.values)
   }, [key])
 
   const set = useCallback(
     (value: T) => {
-      webStorage.current!.write(value)
+      webStorageRef.current!.write(value)
       setValue(value)
     },
-    [webStorage, setValue]
+    [webStorageRef, setValue]
   )
 
   const reset = useCallback(() => {
-    webStorage.current!.reset()
+    webStorageRef.current!.reset()
     setValue(initialValue)
-  }, [webStorage, setValue])
+  }, [webStorageRef, setValue])
 
   return [
     value,
