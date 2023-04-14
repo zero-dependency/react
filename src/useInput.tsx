@@ -15,9 +15,9 @@ export function useInput(name: string, initialValue?: string) {
     setValue(event.target.value)
   }, [])
 
-  return [
+  return {
     name,
     value,
     onChange
-  ] as const
+  } as const
 }

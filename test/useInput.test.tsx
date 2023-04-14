@@ -7,21 +7,23 @@ describe('useInput', () => {
   })
 
   it('should be return initial value', () => {
-    const { result } = renderHook(() => useInput('initial value'))
-    expect(result.current[0]).toBe('initial value')
+    const { result } = renderHook(() => useInput('name', 'John'))
+    expect(result.current.onChange).toBeDefined()
+    expect(result.current.name).toBe('name')
+    expect(result.current.value).toBe('John')
   })
 
   it('should be change input value', () => {
-    const { result } = renderHook(() => useInput(''))
+    const { result } = renderHook(() => useInput('name', 'John'))
     render(
       <input
-        aria-label="input-text"
+        aria-label="input-name"
         type="text"
         {...result}
       />
     )
-    const input = screen.getByLabelText<HTMLInputElement>('input-text')
-    fireEvent.change(input, { target: { value: 'test' } })
-    expect(input.value).toBe('test')
+    const input = screen.getByLabelText<HTMLInputElement>('input-name')
+    fireEvent.change(input, { target: { value: 'John Doe' } })
+    expect(input.value).toBe('John Doe')
   })
 })
