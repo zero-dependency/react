@@ -1,33 +1,28 @@
 import { useCallback, useRef, useState } from 'react'
-import type { LocalStorage, SessionStorage } from '@zero-dependency/storage'
-import type {
-  ExcludeFunction,
-  StorageOptions
-} from '@zero-dependency/storage/dist/types.js'
-
-type StorageAdapter = typeof LocalStorage | typeof SessionStorage
+import { WebStorage } from '@zero-dependency/storage'
+import type { ExcludeFunction, StorageOptions } from '@zero-dependency/storage'
 
 export function useStorage<T>(
-  adapter: StorageAdapter,
   key: string,
   initialValue: ExcludeFunction<T>,
+  storage: Storage,
   options?: StorageOptions<T>
 ) {
-  const storage = useRef(
+  const webStorage = useRef(
     (
       key: string,
       initialValue: ExcludeFunction<T>,
       options?: StorageOptions<T>
-    ) => new adapter(key, initialValue, options)
+    ) => new WebStorage(key, initialValue, storage, options)
   )
 
   const [state, setState] = useState<T>(
-    () => storage.current(key, initialValue, options).values
+    () => webStorage.current(key, initialValue, options).values
   )
 
   const set = useCallback(
     (value: T) => {
-      storage.current(key, initialValue, options).write(value)
+      webStorage.current(key, initialValue, options).write(value)
       setState(value)
     },
     [
@@ -39,7 +34,7 @@ export function useStorage<T>(
   )
 
   const reset = useCallback(() => {
-    storage.current(key, initialValue, options).reset()
+    webStorage.current(key, initialValue, options).reset()
     setState(initialValue)
   }, [
     key,

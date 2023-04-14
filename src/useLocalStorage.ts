@@ -1,9 +1,5 @@
-import { LocalStorage } from '@zero-dependency/storage'
 import { useStorage } from './useStorage.js'
-import type {
-  ExcludeFunction,
-  StorageOptions
-} from '@zero-dependency/storage/dist/types.js'
+import type { ExcludeFunction, StorageOptions } from '@zero-dependency/storage'
 
 /**
  * React hook for managing `localStorage`
@@ -13,5 +9,5 @@ export function useLocalStorage<T>(
   initialValue: ExcludeFunction<T>,
   options?: StorageOptions<T>
 ) {
-  return useStorage(LocalStorage, key, initialValue, options)
+  return useStorage(key, initialValue, localStorage, options)
 }
