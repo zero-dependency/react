@@ -28,7 +28,8 @@ import {
   useLocalStorage,
   useSessionStorage,
   useCookie,
-  ProviderTree
+  ProviderTree,
+  createProvider
 } from '@zero-dependency/react'
 
 // React.lazy
@@ -156,4 +157,35 @@ createRoot(root).render(
     </SWRConfig>
   </StrictMode>
 )
+
+// createProvider
+interface Counter {
+  count: number
+  setCount: React.Dispatch<React.SetStateAction<number>>
+}
+
+const [useCounter, CounterProvider] = createProvider<Counter>('Counter')
+
+function Counter() {
+  const { count, setCount } = useCounter()
+
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count + 1)}>
+        Increment
+      </button>
+    </div>
+  )
+}
+
+function App() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <CounterProvider value={{ count, setCount }}>
+      <Counter />
+    </CounterProvider>
+  )
+}
 ```
