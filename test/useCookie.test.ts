@@ -1,3 +1,4 @@
+import { afterEach, describe } from 'vitest'
 import { useCookie } from '../src/useCookie.js'
 import { act, renderHook } from './utils.js'
 
@@ -6,12 +7,19 @@ interface Cookie {
   lang: string
 }
 
-describe('useCookie', () => {
-  it('should be defined', () => {
+afterEach(() => {
+  const { result } = renderHook(() => useCookie())
+  for (const cookieName of Object.keys(result.current[0])) {
+    act(() => result.current[2](cookieName))
+  }
+})
+
+describe('useCookie', (test) => {
+  test('should be defined', () => {
     expect(useCookie).toBeDefined()
   })
 
-  it('should be render hook', () => {
+  test('should be render hook', () => {
     const { result } = renderHook(() => useCookie<Cookie>())
     expect(result.current[0].theme).toBeUndefined()
 
@@ -30,5 +38,18 @@ describe('useCookie', () => {
     // get cookie
     expect(result.current[0].theme).toBeUndefined()
     expect(result.current[0].lang).toBeUndefined()
+  })
+
+  test('should be render hook with initial value', () => {
+    const { result } = renderHook(() =>
+      useCookie<Cookie>({
+        initialValues: {
+          theme: 'light',
+          lang: 'en'
+        }
+      })
+    )
+    expect(result.current[0].theme).toBe('light')
+    expect(result.current[0].lang).toBe('en')
   })
 })
