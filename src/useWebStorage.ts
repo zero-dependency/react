@@ -24,13 +24,13 @@ export function useWebStorage<T>(
       webStorageRef.current!.write(value)
       setValue(value)
     },
-    [webStorageRef, setValue]
+    [setValue]
   )
 
   const reset = useCallback(() => {
     webStorageRef.current!.reset()
     setValue(initialValue)
-  }, [webStorageRef, setValue])
+  }, [setValue])
 
   return [
     value,
