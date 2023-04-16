@@ -13,10 +13,13 @@ import { KeyOf } from './types.js'
 export function useForm<T extends Record<string, string>>(initialValues: T) {
   const [values, setValues] = useState(initialValues)
 
-  const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target
-    setValues((values) => ({ ...values, [name]: value }))
-  }, [])
+  const onChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target
+      setValues((prevValues) => ({ ...prevValues, [name]: value }))
+    },
+    [setValues]
+  )
 
   const getInput = useCallback(
     <K extends KeyOf<T>>(name: K) => {
@@ -31,7 +34,7 @@ export function useForm<T extends Record<string, string>>(initialValues: T) {
 
   const formReset = useCallback(() => {
     setValues(initialValues)
-  }, [])
+  }, [setValues])
 
   return [
     values,
