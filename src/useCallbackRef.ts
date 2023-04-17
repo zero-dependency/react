@@ -1,6 +1,5 @@
 import { useLayoutEffect, useRef } from 'react'
-
-type Fn<T extends (...args: any[]) => void> = (...args: Parameters<T>) => void
+import type { CallbackFn } from './types.js'
 
 /**
  * Allow to access a fresh closures in the function but returns stable reference during rerenders
@@ -9,10 +8,10 @@ type Fn<T extends (...args: any[]) => void> = (...args: Parameters<T>) => void
  */
 export function useCallbackRef<T extends (...args: any[]) => any>(
   callback: T
-): Fn<T> {
+): CallbackFn<T> {
   const ref: React.MutableRefObject<{
-    stableFn: Fn<T>
-    callback: Fn<T>
+    stableFn: CallbackFn<T>
+    callback: CallbackFn<T>
   }> = useRef({
     stableFn: (...args) => ref.current.callback(...args),
     callback
