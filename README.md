@@ -42,11 +42,11 @@ function NameInput() {
 }
 
 function Form() {
-  const { values, getInput, formReset } = useForm({ name: '' })
+  const [value, getInput, formReset] = useForm({ name: '' })
 
   function formSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault()
-    // do something with values
+    // do something with value
     formReset()
   }
 
