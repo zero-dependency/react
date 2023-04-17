@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { Cookie } from '@zero-dependency/cookie'
 import { KeyOf } from './types.js'
 import type {
@@ -10,7 +10,7 @@ import type {
  * React hook for managing cookies
  * @example
  * const [cookies, setCookie, removeCookie] = useCookie({
- *   initialValues: {
+ *   initialValue: {
  *     theme: 'dark'
  *   }
  * })
@@ -21,7 +21,7 @@ import type {
 export function useCookie<T extends Record<string, any>>(
   options?: CookieOptions<T>
 ) {
-  const [cookie] = useState(() => new Cookie(options))
+  const cookie = useMemo(() => new Cookie(options), [])
   const [value, setValue] = useState(() => cookie.list())
 
   const setCookie = useCallback(<K extends KeyOf<T>>(name: K, value: T[K]) => {

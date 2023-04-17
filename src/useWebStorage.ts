@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { WebStorage } from '@zero-dependency/storage'
 import type {
   ExcludeFunction,
@@ -11,8 +11,9 @@ export function useWebStorage<T>(
   storage: Storage,
   options?: StorageOptions<T>
 ) {
-  const [webStorage] = useState<WebStorage<T>>(
-    () => new WebStorage(key, initialValue, storage, options)
+  const webStorage = useMemo<WebStorage<T>>(
+    () => new WebStorage(key, initialValue, storage, options),
+    [key]
   )
   const [value, setValue] = useState(() => webStorage.value)
 
