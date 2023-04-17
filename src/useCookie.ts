@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { Cookie } from '@zero-dependency/cookie'
 import { KeyOf } from './types.js'
 import type {
@@ -9,48 +9,44 @@ import type {
 /**
  * React hook for managing cookies
  * @example
- * const [cookies, setCookie, removeCookie] = useCookie()
- *
- * // set initial value
- * useLayoutEffect(() => {
- *   if (!cookies.theme) {
- *     setCookie('theme', 'dark')
+ * const [cookies, setCookie, removeCookie] = useCookie({
+ *   initialValues: {
+ *     theme: 'dark'
  *   }
- * }, [])
+ * })
+ *
+ * return <h1>Theme: {cookies.theme}</h1>
  * @param options Cookie options
  */
 export function useCookie<T extends Record<string, any>>(
   options?: CookieOptions<T>
 ) {
-  const cookieRef = useRef(new Cookie(options))
-  const [cookies, setCookies] = useState<T>(() => cookieRef.current.list())
+  const [cookie] = useState(() => new Cookie(options))
+  const [value, setValue] = useState(() => cookie.list())
 
-  const set = useCallback(
-    <K extends KeyOf<T>>(name: K, value: T[K]) => {
-      if (get(name) === value) return
-      cookieRef.current.set(name, value)
-      setCookies(cookieRef.current.list())
-    },
-    [setCookies]
-  )
+  const setCookie = useCallback(<K extends KeyOf<T>>(name: K, value: T[K]) => {
+    if (getCookie(name) === value) return
+    cookie.set(name, value)
+    setValue(cookie.list())
+  }, [])
 
-  const remove = useCallback(
+  const removeCookie = useCallback(
     <K extends KeyOf<T>>(name: K, attributes?: CookieDomainAttributes) => {
-      if (!cookieRef.current.has(name)) return
-      cookieRef.current.remove(name, attributes)
-      setCookies(cookieRef.current.list())
+      if (!cookie.has(name)) return
+      cookie.remove(name, attributes)
+      setValue(cookie.list())
     },
-    [setCookies]
+    []
   )
 
-  const get = useCallback(<K extends KeyOf<T>>(name: K) => {
-    return cookieRef.current.get(name)
+  const getCookie = useCallback(<K extends KeyOf<T>>(name: K) => {
+    return cookie.get(name)
   }, [])
 
   return [
-    cookies,
-    set,
-    remove,
-    get
+    value,
+    setCookie,
+    removeCookie,
+    getCookie
   ] as const
 }
