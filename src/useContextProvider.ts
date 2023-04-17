@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-export function useProviderContext<T>(
+export function useContextProvider<T>(
   displayName: string,
   context: React.Context<T>
 ) {

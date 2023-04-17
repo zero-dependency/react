@@ -1,15 +1,15 @@
 import { createContext } from 'react'
-import { useProviderContext } from '../src/useProviderContext.js'
+import { useContextProvider } from '../src/useContextProvider.js'
 import { renderHook } from './utils.js'
 
-describe('useProviderContext', () => {
+describe('useContextProvider', () => {
   test('should be defined', () => {
-    expect(useProviderContext).toBeDefined()
+    expect(useContextProvider).toBeDefined()
   })
 
   test('should return the context value', () => {
     const nameContext = createContext('John')
-    const { result } = renderHook(() => useProviderContext('Name', nameContext))
+    const { result } = renderHook(() => useContextProvider('Name', nameContext))
     expect(result.current).toBe('John')
   })
 })
