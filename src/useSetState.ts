@@ -1,15 +1,33 @@
 import { useCallback, useState } from 'react'
+import type { SetStateActionPartial } from './types.js'
 
-export function useSetState<T extends Record<string, any>>(initialState: T) {
+/**
+ * @param initialState Initial state
+ * @example
+ * ```jsx
+ * const [state, setState] = useSetState({ count: 1, name: 'John' })
+ *
+ * function increment() {
+ *   setState((state) => ({ count: state.count + 1 }))
+ * }
+ *
+ * function setName(name: string) {
+ *   setState({ name })
+ * }
+ * ```
+ */
+export function useSetState<State extends Record<string, any>>(
+  initialState: State
+) {
   const [state, _setState] = useState(initialState)
 
   const setState = useCallback(
-    (statePartial: Partial<T> | ((currentState: T) => Partial<T>)) =>
+    (setStateAction: SetStateActionPartial<State>) =>
       _setState((current) => ({
         ...current,
-        ...(statePartial instanceof Function
-          ? statePartial(current)
-          : statePartial)
+        ...(setStateAction instanceof Function
+          ? setStateAction(current)
+          : setStateAction)
       })),
     []
   )

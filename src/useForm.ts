@@ -10,7 +10,9 @@ import { KeyOf } from './types.js'
  *   email: ''
  * })
  */
-export function useForm<T extends Record<string, string>>(initialValue: T) {
+export function useForm<FormValues extends Record<string, string>>(
+  initialValue: FormValues
+) {
   const [value, setValue] = useState(initialValue)
 
   const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +21,7 @@ export function useForm<T extends Record<string, string>>(initialValue: T) {
   }, [])
 
   const getInput = useCallback(
-    <K extends KeyOf<T>>(name: K) => {
+    <Name extends KeyOf<FormValues>>(name: Name) => {
       return {
         name,
         value: value[name],

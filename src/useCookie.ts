@@ -8,30 +8,43 @@ import type {
 
 /**
  * React hook for managing cookies
- * @example
- * const [cookies, setCookie, removeCookie] = useCookie({
- *   initialValue: {
- *     theme: 'dark'
- *   }
- * })
- *
- * return <h1>Theme: {cookies.theme}</h1>
  * @param options Cookie options
+ * @example
+ * ```jsx
+ * function App() {
+ *   const [cookies, setCookie, removeCookie] = useCookie({
+ *     initialValue: {
+ *       theme: 'dark'
+ *     }
+ *   })
+ *
+ *   return <h1>Theme: {cookies.theme}</h1>
+ * }
+ * ```
  */
-export function useCookie<T extends Record<string, any>>(
-  options?: CookieOptions<T>
+export function useCookie<CookieValues extends Record<string, any>>(
+  options?: CookieOptions<CookieValues>
 ) {
   const cookie = useMemo(() => new Cookie(options), [])
   const [value, setValue] = useState(() => cookie.list())
 
-  const setCookie = useCallback(<K extends KeyOf<T>>(name: K, value: T[K]) => {
-    if (getCookie(name) === value) return
-    cookie.set(name, value)
-    setValue(cookie.list())
-  }, [])
+  const setCookie = useCallback(
+    <Name extends KeyOf<CookieValues>>(
+      name: Name,
+      value: CookieValues[Name]
+    ) => {
+      if (getCookie(name) === value) return
+      cookie.set(name, value)
+      setValue(cookie.list())
+    },
+    []
+  )
 
   const removeCookie = useCallback(
-    <K extends KeyOf<T>>(name: K, attributes?: CookieDomainAttributes) => {
+    <Name extends KeyOf<CookieValues>>(
+      name: Name,
+      attributes?: CookieDomainAttributes
+    ) => {
       if (!cookie.has(name)) return
       cookie.remove(name, attributes)
       setValue(cookie.list())
@@ -39,9 +52,12 @@ export function useCookie<T extends Record<string, any>>(
     []
   )
 
-  const getCookie = useCallback(<K extends KeyOf<T>>(name: K) => {
-    return cookie.get(name)
-  }, [])
+  const getCookie = useCallback(
+    <Name extends KeyOf<CookieValues>>(name: Name) => {
+      return cookie.get(name)
+    },
+    []
+  )
 
   return [
     value,

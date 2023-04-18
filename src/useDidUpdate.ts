@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react'
 import type { DependencyList, EffectCallback } from 'react'
 
-export function useDidUpdate(
-  callback: EffectCallback,
-  dependencies?: DependencyList
-) {
+/**
+ * A hook that runs a callback after the first render
+ * @param callback The callback to run after the first render
+ * @param deps The dependencies to watch for changes
+ */
+export function useDidUpdate(callback: EffectCallback, deps?: DependencyList) {
   const mounted = useRef(false)
 
   useEffect(
@@ -21,5 +23,5 @@ export function useDidUpdate(
 
     mounted.current = true
     return undefined
-  }, dependencies)
+  }, deps)
 }
