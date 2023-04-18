@@ -4,6 +4,21 @@ type Component = React.FunctionComponent<any>
 type Props<T extends Component> = Omit<Parameters<T>[0], 'children'>
 type Provider<T extends Component> = [Component, Props<T>?]
 
+/**
+ * A component that allows you to create a tree of providers
+ * @example
+ * ```jsx
+ * <ProviderTree
+ *   providers={(wrapper) => [
+ *     wrapper(StrictMode),
+ *     wrapper(MyProvider, { value: 'hello' }),
+ *     wrapper(MyOtherProvider, { value: 'world' })
+ *   ]}
+ * >
+ *   <App />
+ * </ProviderTree>
+ * ```
+ */
 export function ProviderTree(props: {
   providers: (
     wrapper: <T extends Component>(

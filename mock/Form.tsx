@@ -3,7 +3,7 @@ import { useForm } from '../src/useForm.js'
 
 export function Form() {
   const [
-    values,
+    value,
     getInput,
     formReset
   ] = useForm({
@@ -17,7 +17,7 @@ export function Form() {
 
   return (
     <form onSubmit={formSubmit}>
-      <pre aria-label="form-values">{JSON.stringify(values)}</pre>
+      <pre aria-label="form-value">{JSON.stringify(value)}</pre>
       <label>
         Name:
         <input

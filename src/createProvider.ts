@@ -1,12 +1,18 @@
 import { createContext } from 'react'
-import { useProviderContext } from './useProviderContext.js'
+import { useContextProvider } from './useContextProvider.js'
 
+/**
+ * Creates a context provider, hook, and consumer
+ * @param displayName The name of the context. Used for error messages
+ * @param defaultValue The default value of the context
+ * @returns A tuple of the hook, provider, and consumer
+ */
 export function createProvider<T>(
   displayName: string,
   defaultValue: T | null = null
 ) {
   const context = createContext<T | null>(defaultValue)
-  const hook = () => useProviderContext(displayName, context)
+  const hook = () => useContextProvider(displayName, context)
   const provider = context.Provider
   const consumer = context.Consumer
 

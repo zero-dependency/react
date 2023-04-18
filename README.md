@@ -42,11 +42,11 @@ function NameInput() {
 }
 
 function Form() {
-  const { values, getInput, formReset } = useForm({ name: '' })
+  const [value, getInput, formReset] = useForm({ name: '' })
 
   function formSubmit(event: React.FormEvent<HTMLFormElement>): void {
     event.preventDefault()
-    // do something with values
+    // do something with value
     formReset()
   }
 
@@ -69,7 +69,7 @@ function App() {
   const [users, setUsers, resetUsers] = useLocalStorage<User[]>('users', [])
 
   function addUser(user: User) {
-    setUsers([...users, user])
+    setUsers((prevState) => [...prevState, user])
   }
 
   return (
@@ -87,17 +87,13 @@ interface Cookie {
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookie<Cookie>({
+    initialValue: {
+      theme: 'dark'
+    },
     attributes: {
       maxAge: 60 * 60 * 24 * 7 // 1 week
     }
   })
-
-  // set initial value
-  useLayoutEffect(() => {
-    if (!cookies.theme) {
-      setCookie('theme', 'dark')
-    }
-  }, [])
 
   return (
     <div>
@@ -122,17 +118,17 @@ const root = document.querySelector<HTMLElement>('#root')!
 // this is a helper function to create a tree of components
 createRoot(root).render(
   <ProviderTree
-    providers={($) => [
-      $(StrictMode),
-      $(SWRConfig, {
+    providers={(wrapper) => [
+      wrapper(StrictMode),
+      wrapper(SWRConfig, {
         value: {
           refreshInterval: 3000,
           fetcher: (resource, init) =>
             fetch(resource, init).then((res) => res.json())
         }
       }),
-      $(Router),
-      $(Layout)
+      wrapper(Router),
+      wrapper(Layout)
     ]}
   >
     <App />

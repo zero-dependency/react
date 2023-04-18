@@ -1,6 +1,11 @@
 import { useContext } from 'react'
 
-export function useProviderContext<T>(
+/**
+ * A hook that throws an error if it is used outside of a context provider
+ * @param displayName The name of the context provider. Used for error messages
+ * @param context The context to use
+ */
+export function useContextProvider<T>(
   displayName: string,
   context: React.Context<T>
 ) {

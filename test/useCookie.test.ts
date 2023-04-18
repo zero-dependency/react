@@ -43,7 +43,7 @@ describe('useCookie', (test) => {
   test('should be render hook with initial value', () => {
     const { result } = renderHook(() =>
       useCookie<Cookie>({
-        initialValues: {
+        initialValue: {
           theme: 'light',
           lang: 'en'
         }

@@ -3,41 +3,40 @@ import { KeyOf } from './types.js'
 
 /**
  * React hook for managing form state
+ * @param initialValue initial value for the form
  * @example
- * const [values, getInput, formReset] = useForm({
+ * const [value, getInput, formReset] = useForm({
  *   name: '',
  *   email: ''
  * })
- * @param initialValues initial values for the form
  */
-export function useForm<T extends Record<string, string>>(initialValues: T) {
-  const [values, setValues] = useState(initialValues)
+export function useForm<FormValues extends Record<string, string>>(
+  initialValue: FormValues
+) {
+  const [value, setValue] = useState(initialValue)
 
-  const onChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value } = event.target
-      setValues((prevValues) => ({ ...prevValues, [name]: value }))
-    },
-    [setValues]
-  )
+  const onChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target
+    setValue((prevValue) => ({ ...prevValue, [name]: value }))
+  }, [])
 
   const getInput = useCallback(
-    <K extends KeyOf<T>>(name: K) => {
+    <Name extends KeyOf<FormValues>>(name: Name) => {
       return {
         name,
-        value: values[name],
+        value: value[name],
         onChange
       }
     },
-    [values]
+    [value]
   )
 
   const formReset = useCallback(() => {
-    setValues(initialValues)
-  }, [setValues])
+    setValue(initialValue)
+  }, [])
 
   return [
-    values,
+    value,
     getInput,
     formReset
   ] as const

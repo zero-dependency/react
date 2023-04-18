@@ -14,8 +14,10 @@ describe('useStorage', () => {
     renderHook(() => useSessionStorage('foo', 'bar'))
     const { result } = renderHook(() => useLocalStorage('foo', 'bar'))
     expect(result.current[0]).toBe('bar') // value
-    act(() => result.current[1]('baz')) // set
-    expect(result.current[0]).toBe('baz') // value
+    act(() => result.current[1]((prevValue) => prevValue + 'baz')) // set
+    expect(result.current[0]).toBe('barbaz') // value
+    act(() => result.current[1]('foo')) // set
+    expect(result.current[0]).toBe('foo') // value
     act(() => result.current[2]()) // reset
     expect(result.current[0]).toBe('bar') // value
   })

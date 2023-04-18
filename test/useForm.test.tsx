@@ -16,7 +16,7 @@ describe('useForm', () => {
 
   it('should be render form', () => {
     render(<Form />)
-    const values = screen.getByLabelText('form-values')
+    const value = screen.getByLabelText('form-value')
     const name = screen.getByLabelText<HTMLInputElement>('input-name')
     const email = screen.getByLabelText<HTMLInputElement>('input-email')
     const submit = screen.getByLabelText<HTMLButtonElement>('form-submit')
@@ -26,7 +26,7 @@ describe('useForm', () => {
     expect(email).toBeDefined()
     expect(submit).toBeDefined()
 
-    // initial values
+    // initial value
     expect(name.value).toBe('John')
     expect(email.value).toBe('')
 
@@ -38,7 +38,7 @@ describe('useForm', () => {
 
     // submit
     fireEvent.click(submit)
-    expect(values.textContent).toBe('{"name":"John Doe","email":"foo@bar.com"}')
+    expect(value.textContent).toBe('{"name":"John Doe","email":"foo@bar.com"}')
 
     // reset
     fireEvent.click(reset)

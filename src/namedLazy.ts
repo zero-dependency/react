@@ -1,7 +1,7 @@
 import { lazy } from 'react'
 
 /**
- * A wrapper around React.lazy that allows you to specify a named export to resolve to.
+ * A wrapper around React.lazy that allows you to specify a named export to resolve to
  * @example namedLazy(() => import('./MyComponent'), 'MyComponent')
  * @param loader a function that returns a promise that resolves to an object
  * @param name the name of the named export to resolve to
