@@ -1,7 +1,9 @@
 import { useLayoutEffect, useRef } from 'react'
 
 /**
- * A hook that returns a ref that always contains the latest value
+ * This is mostly useful to get access to the latest value of some props
+ * or state inside an asynchronous callback,
+ * instead of that value at the time the callback was created from
  * @param value The value to store in a ref
  */
 export function useLatest<T>(value: T) {
