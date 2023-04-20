@@ -36,8 +36,7 @@
     "build": "vite build",
     "test": "vitest run --coverage",
     "test:watch": "vitest --ui --watch --coverage",
-    "format": "prettier --write --ignore-unknown **",
-    "prepublishOnly": "pnpm build"
+    "format": "prettier --write --ignore-unknown **"
   },
   "devDependencies": {
     "@crashmax/prettier-config": "3.2.1",
