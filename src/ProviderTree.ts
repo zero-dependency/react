@@ -26,7 +26,7 @@ export function ProviderTree(props: {
       props?: Props<T>
     ) => Provider<T>
   ) => Provider<Component>[]
-  children?: JSX.Element
+  children?: React.ReactNode
 }) {
   const providers = props.providers(providerWrapper)
   if (!providers.length) {
@@ -37,7 +37,7 @@ export function ProviderTree(props: {
 
 function createProviderTree<T extends Component>(
   providers: Provider<T>[],
-  children?: JSX.Element
+  children?: React.ReactNode
 ): JSX.Element {
   const [provider, props = {}] = providers.shift()!
   return createElement(
