@@ -23,8 +23,6 @@ pnpm add @zero-dependency/react
 ```tsx
 import {
   namedLazy,
-  useInput,
-  useForm,
   useLocalStorage,
   useSessionStorage,
   useCookie,
@@ -34,31 +32,6 @@ import {
 
 // React.lazy
 const LazyComponent = namedLazy(() => import('./LazyComponent'), 'LazyComponent')
-
-// forms
-function NameInput() {
-  const name = useInput('')
-  return <input type="text" {...name} />
-}
-
-function Form() {
-  const [value, getInput, formReset] = useForm({ name: '' })
-
-  function formSubmit(event: React.FormEvent<HTMLFormElement>): void {
-    event.preventDefault()
-    // do something with value
-    formReset()
-  }
-
-  return (
-    <form onSubmit={formSubmit}>
-      <input type="text" {...getInput('name')} />
-      <button type="submit">
-        Submit
-      </button>
-    </form>
-  )
-}
 
 // localStorage/sessionStorage
 interface User {
