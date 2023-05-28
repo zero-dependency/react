@@ -6,7 +6,7 @@ import type { CallbackFn } from './types.js'
  * @see https://reactjs.org/docs/hooks-faq.html#how-to-read-an-often-changing-value-from-usecallback
  * @see https://github.com/reactjs/rfcs/pull/220#issuecomment-1259938816
  */
-export function useCallbackRef<T extends (...args: any[]) => any>(
+export function useEvent<T extends (...args: any[]) => any>(
   callback: T
 ): CallbackFn<T> {
   const ref: React.MutableRefObject<{

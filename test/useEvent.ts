@@ -1,15 +1,15 @@
 import { describe, expect } from 'vitest'
-import { useCallbackRef } from '../src/useCallbackRef.js'
+import { useEvent } from '../src/useEvent.js'
 import { renderHook } from './utils.js'
 
-describe('useCallbackRef', (test) => {
+describe('useEvent', (test) => {
   test('should be defined', () => {
-    expect(useCallbackRef).toBeDefined()
+    expect(useEvent).toBeDefined()
   })
 
   test('return same callback instance, but dependencies should be updated', () => {
     const { result, rerender } = renderHook(
-      (value) => useCallbackRef(() => value),
+      (value) => useEvent(() => value),
       { initialProps: 1 }
     )
 
