@@ -8,10 +8,9 @@ describe('useEvent', (test) => {
   })
 
   test('return same callback instance, but dependencies should be updated', () => {
-    const { result, rerender } = renderHook(
-      (value) => useEvent(() => value),
-      { initialProps: 1 }
-    )
+    const { result, rerender } = renderHook((value) => useEvent(() => value), {
+      initialProps: 1
+    })
 
     const fn1 = result.current
     expect(fn1()).toBe(1)
