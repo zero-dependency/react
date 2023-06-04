@@ -1,6 +1,6 @@
 {
   "name": "@zero-dependency/react",
-  "version": "0.17.0",
+  "version": "0.17.1",
   "description": "React hooks and utils",
   "type": "module",
   "types": "./dist/index.d.ts",
