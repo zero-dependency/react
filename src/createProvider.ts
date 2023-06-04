@@ -10,7 +10,11 @@ import { useContextProvider } from './useContextProvider.js'
 export function createProvider<T>(
   displayName: string,
   defaultValue: T | null = null
-) {
+): readonly [
+  hook: () => T,
+  provider: React.Provider<T | null>,
+  consumer: React.Consumer<T | null>
+] {
   const context = createContext<T | null>(defaultValue)
   const hook = () => useContextProvider(displayName, context)
   const provider = context.Provider
@@ -20,5 +24,5 @@ export function createProvider<T>(
     hook,
     provider,
     consumer
-  ] as const
+  ]
 }

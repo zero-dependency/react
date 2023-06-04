@@ -18,7 +18,10 @@ import type { SetStateActionPartial } from './types.js'
  */
 export function useSetState<State extends Record<string, any>>(
   initialState: State
-) {
+): readonly [
+  state: State,
+  setState: (setStateAction: SetStateActionPartial<State>) => void
+] {
   const [state, _setState] = useState(initialState)
 
   const setState = useCallback(

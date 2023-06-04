@@ -24,7 +24,20 @@ import type {
  */
 export function useCookie<CookieValues extends Record<string, any>>(
   options?: CookieOptions<CookieValues>
-) {
+): readonly [
+  values: CookieValues,
+  setValue: <Name extends KeyOf<CookieValues>>(
+    name: Name,
+    value: CookieValues[Name]
+  ) => void,
+  removeValue: <Name extends KeyOf<CookieValues>>(
+    name: Name,
+    attributes?: CookieDomainAttributes
+  ) => void,
+  getValue: <Name extends KeyOf<CookieValues>>(
+    name: Name
+  ) => CookieValues[Name] | null
+] {
   const cookie = useMemo(() => new Cookie(options), [])
   const [value, setValue] = useState(() => cookie.list())
 

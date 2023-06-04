@@ -10,7 +10,11 @@ export function useWebStorage<T>(
   initialValue: ExcludeFunction<T>,
   storage: Storage,
   options?: StorageOptions<T>
-) {
+): readonly [
+  value: T,
+  setValue: (value: React.SetStateAction<T>) => void,
+  resetValue: () => void
+] {
   const webStorage = useMemo<WebStorage<T>>(
     () => new WebStorage(key, initialValue, storage, options),
     [key]
