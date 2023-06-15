@@ -2,9 +2,20 @@ import { useLayoutEffect, useRef } from 'react'
 import type { CallbackFn } from './types.js'
 
 /**
- * Allow to access a fresh closures in the function but returns stable reference during rerenders
- * @see https://reactjs.org/docs/hooks-faq.html#how-to-read-an-often-changing-value-from-usecallback
- * @see https://github.com/reactjs/rfcs/pull/220#issuecomment-1259938816
+ * Returns a stable version of the provided callback function that can be safely passed to other hooks
+ * that depend on it. This is achieved by creating a mutable ref object that contains both the original
+ * callback function and the stable version. The stable version is created by calling the original callback
+ * function with the current arguments. When the provided callback function changes, the ref object is
+ * updated to contain the new callback function, effectively creating a new stable version.
+ *
+ * @param {T} callback
+ * the original callback function to create a stable version of
+ *
+ * @return {CallbackFn<T>}
+ * A stable version of the provided callback function
+ *
+ * @see
+ * https://github.com/reactjs/rfcs/pull/220
  */
 export function useEvent<T extends (...args: any[]) => any>(
   callback: T

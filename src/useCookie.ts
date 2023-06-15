@@ -7,8 +7,11 @@ import type {
 } from '@zero-dependency/cookie'
 
 /**
- * React hook for managing cookies
- * @param options Cookie options
+ * React hook for managing cookies.
+ *
+ * @param options
+ * Cookie options.
+ *
  * @example
  * ```jsx
  * function App() {
@@ -25,18 +28,20 @@ import type {
 export function useCookie<CookieValues extends Record<string, any>>(
   options?: CookieOptions<CookieValues>
 ): readonly [
-  values: CookieValues,
-  setValue: <Name extends KeyOf<CookieValues>>(
-    name: Name,
-    value: CookieValues[Name]
-  ) => void,
-  removeValue: <Name extends KeyOf<CookieValues>>(
-    name: Name,
-    attributes?: CookieDomainAttributes
-  ) => void,
-  getValue: <Name extends KeyOf<CookieValues>>(
-    name: Name
-  ) => CookieValues[Name] | null
+  CookieValues,
+  {
+    readonly setCookie: <Name extends KeyOf<CookieValues>>(
+      name: Name,
+      value: CookieValues[Name]
+    ) => void
+    readonly removeCookie: <Name extends KeyOf<CookieValues>>(
+      name: Name,
+      attributes?: CookieDomainAttributes
+    ) => void
+    readonly getCookie: <Name extends KeyOf<CookieValues>>(
+      name: Name
+    ) => CookieValues[Name] | null
+  }
 ] {
   const cookie = useMemo(() => new Cookie(options), [])
   const [value, setValue] = useState(() => cookie.list())
@@ -74,8 +79,10 @@ export function useCookie<CookieValues extends Record<string, any>>(
 
   return [
     value,
-    setCookie,
-    removeCookie,
-    getCookie
+    {
+      setCookie,
+      removeCookie,
+      getCookie
+    }
   ] as const
 }

@@ -1,12 +1,14 @@
 import { useLayoutEffect, useRef } from 'react'
 
 /**
- * This is mostly useful to get access to the latest value of some props
- * or state inside an asynchronous callback,
- * instead of that value at the time the callback was created from
- * @param value The value to store in a ref
+ * This is mostly useful to get access to the latest value of some props or
+ * state inside an asynchronous callback, instead of that value at the time
+ * the callback was created from.
+ *
+ * @param value
+ * The value to store in a ref.
  */
-export function useLatest<T>(value: T) {
+export function useLatest<T>(value: T): React.MutableRefObject<T> {
   const valueRef = useRef(value)
 
   useLayoutEffect(() => {

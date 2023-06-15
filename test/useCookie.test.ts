@@ -10,7 +10,7 @@ interface Cookie {
 afterEach(() => {
   const { result } = renderHook(() => useCookie())
   for (const cookieName of Object.keys(result.current[0])) {
-    act(() => result.current[2](cookieName))
+    act(() => result.current[1].removeCookie(cookieName))
   }
 })
 
@@ -24,16 +24,16 @@ describe('useCookie', (test) => {
     expect(result.current[0].theme).toBeUndefined()
 
     // set cookie
-    act(() => result.current[1]('theme', 'dark'))
-    act(() => result.current[1]('theme', 'dark'))
+    act(() => result.current[1].setCookie('theme', 'dark'))
+    act(() => result.current[1].setCookie('theme', 'dark'))
 
     // get cookie
-    expect(result.current[3]('theme')).toBe('dark')
+    expect(result.current[1].getCookie('theme')).toBe('dark')
     expect(result.current[0].theme).toBe('dark')
 
     // remove cookie
-    act(() => result.current[2]('lang'))
-    act(() => result.current[2]('theme'))
+    act(() => result.current[1].removeCookie('lang'))
+    act(() => result.current[1].removeCookie('theme'))
 
     // get cookie
     expect(result.current[0].theme).toBeUndefined()

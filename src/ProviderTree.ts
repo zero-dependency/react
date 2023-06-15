@@ -5,7 +5,20 @@ type Props<T extends Component> = Omit<Parameters<T>[0], 'children'>
 type Provider<T extends Component> = [Component, Props<T>?]
 
 /**
- * A component that allows you to create a tree of providers
+ * Creates a provider tree with the given providers and children.
+ *
+ * @param {function} props.providers
+ * A function that returns an array of component providers.
+ *
+ * @param {ReactNode} [props.children]
+ * The children to render inside the provider tree.
+ *
+ * @throws {Error}
+ * When there are no providers provided.
+ *
+ * @return {JSX.Element}
+ * The provider tree with the given providers and children.
+ *
  * @example
  * ```jsx
  * <ProviderTree
@@ -27,7 +40,7 @@ export function ProviderTree(props: {
     ) => Provider<T>
   ) => Provider<Component>[]
   children?: React.ReactNode
-}) {
+}): JSX.Element {
   const providers = props.providers(providerWrapper)
   if (!providers.length) {
     throw new Error('ProviderTree requires at least one provider')

@@ -6,7 +6,19 @@ type Refs<T> =
   | null
   | undefined
 
-export function useMergeRefs<T>(...refs: Refs<T>[]) {
+/**
+ * Returns a function that merges multiple React refs into one.
+ *
+ * @template T
+ * The type of the ref value
+ *
+ * @param {...Refs<T>} refs
+ * The refs to be merged
+ *
+ * @return {(value: T | null) => void}
+ * A function that sets the value of all merged refs
+ */
+export function useMergeRefs<T>(...refs: Refs<T>[]): (value: T | null) => void {
   const mergedRefs = useCallback((value: T | null) => {
     for (const ref of refs) {
       if (!ref) continue
