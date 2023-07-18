@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import { Cookie } from '@zero-dependency/cookie'
-import { KeyOf } from './types.js'
+import type { KeyOf } from './types.js'
 import type {
   CookieDomainAttributes,
   CookieOptions
@@ -15,7 +15,7 @@ import type {
  * @example
  * ```jsx
  * function App() {
- *   const [cookies, setCookie, removeCookie] = useCookie({
+ *   const [cookies, { setCookie, removeCookie }] = useCookie({
  *     initialValue: {
  *       theme: 'dark'
  *     }
@@ -28,8 +28,8 @@ import type {
 export function useCookie<CookieValues extends Record<string, any>>(
   options?: CookieOptions<CookieValues>
 ): readonly [
-  CookieValues,
-  {
+  cookies: CookieValues,
+  methods: {
     readonly setCookie: <Name extends KeyOf<CookieValues>>(
       name: Name,
       value: CookieValues[Name]

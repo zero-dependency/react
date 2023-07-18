@@ -39,7 +39,7 @@ interface User {
 }
 
 function App() {
-  const [users, setUsers, resetUsers] = useLocalStorage<User[]>('users', [])
+  const [users, { setUsers, resetUsers }] = useLocalStorage<User[]>('users', [])
 
   function addUser(user: User) {
     setUsers((prevState) => [...prevState, user])
@@ -59,7 +59,7 @@ interface Cookie {
 }
 
 function App() {
-  const [cookies, setCookie, removeCookie] = useCookie<Cookie>({
+  const [cookies, { setCookie, removeCookie }] = useCookie<Cookie>({
     initialValue: {
       theme: 'dark'
     },

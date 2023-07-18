@@ -11,9 +11,11 @@ export function useWebStorage<T>(
   storage: Storage,
   options?: StorageOptions<T>
 ): readonly [
-  value: T,
-  setValue: (value: React.SetStateAction<T>) => void,
-  resetValue: () => void
+  name: T,
+  methods: {
+    readonly setStorage: (value: React.SetStateAction<T>) => void
+    readonly resetStorage: () => void
+  }
 ] {
   const webStorage = useMemo<WebStorage<T>>(
     () => new WebStorage(key, initialValue, storage, options),
@@ -36,7 +38,9 @@ export function useWebStorage<T>(
 
   return [
     value,
-    setStorage,
-    resetStorage
+    {
+      setStorage,
+      resetStorage
+    }
   ] as const
 }
