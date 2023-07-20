@@ -1,5 +1,16 @@
 # @zero-dependency/react
 
+## 0.20.1
+
+### Patch Changes
+
+- d90b0e2: feat(workspace): npm provenance
+- Updated dependencies [d90b0e2]
+  - @zero-dependency/cookie@1.13.2
+  - @zero-dependency/storage@1.3.2
+  - @zero-dependency/utils@1.7.2
+  - react@0.0.0
+
 ## 0.20.0
 
 ### Minor Changes
