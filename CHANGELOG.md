@@ -1,5 +1,16 @@
 # @zero-dependency/react
 
+## 0.20.2
+
+### Patch Changes
+
+- 0ef9a43: chore: test npm provenance
+- Updated dependencies [0ef9a43]
+  - @zero-dependency/cookie@1.13.3
+  - @zero-dependency/storage@1.3.3
+  - @zero-dependency/utils@1.7.3
+  - react@0.0.0
+
 ## 0.20.1
 
 ### Patch Changes
