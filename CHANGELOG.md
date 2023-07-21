@@ -1,5 +1,16 @@
 # @zero-dependency/react
 
+## 0.20.3
+
+### Patch Changes
+
+- ci: set node 18
+- Updated dependencies
+  - @zero-dependency/cookie@1.13.4
+  - @zero-dependency/storage@1.3.4
+  - @zero-dependency/utils@1.7.4
+  - react@0.0.0
+
 ## 0.20.2
 
 ### Patch Changes
