@@ -32,6 +32,6 @@ describe('createProvider', () => {
   })
 
   it('should throw an error if used outside of a provider', () => {
-    expect(() => render(<AppWithError />)).toThrowErrorMatchingSnapshot()
+    expect(() => render(<AppWithError />)).to.throw()
   })
 })

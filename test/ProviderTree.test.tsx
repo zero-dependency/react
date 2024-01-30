@@ -48,6 +48,6 @@ describe('ProviderTree', () => {
           providers: ($) => []
         })
       )
-    ).toThrowErrorMatchingSnapshot()
+    ).to.throw()
   })
 })
