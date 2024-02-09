@@ -1,8 +1,9 @@
-import { useWebStorage } from './useWebStorage.js'
 import type {
   ExcludeFunction,
   StorageOptions
 } from '@zero-dependency/storage/dist/types.js'
+
+import { useWebStorage } from './useWebStorage.js'
 
 /**
  * Returns a hook that provides a way to read from and write to the `localStorage` of the browser.

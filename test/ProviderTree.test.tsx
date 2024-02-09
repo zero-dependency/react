@@ -9,12 +9,10 @@ describe('ProviderTree', () => {
 
   it('should render the tree of providers', () => {
     const { container } = render(
-      <ProviderTree
-        providers={($) => [
+      <ProviderTree providers={($) => [
           $(MockProvider, { id: 'foo' }),
           $(MockProvider, { id: 'bar' })
-        ]}
-      >
+        ]}>
         <App />
       </ProviderTree>
     )

@@ -1,4 +1,5 @@
 import { describe, expect } from 'vitest'
+
 import { useToggle } from '../src/useToggle.js'
 import { act, renderHook } from './utils.js'
 

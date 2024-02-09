@@ -1,4 +1,5 @@
 import { describe, expect } from 'vitest'
+
 import { useEvent } from '../src/useEvent.js'
 import { renderHook } from './utils.js'
 

@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef } from 'react'
+
 import type { CallbackFn } from './types.js'
 
 /**

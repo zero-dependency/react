@@ -1,4 +1,5 @@
 import { describe, expect, vi } from 'vitest'
+
 import { useDidUpdate } from '../src/useDidUpdate.js'
 import { renderHook } from './utils.js'
 

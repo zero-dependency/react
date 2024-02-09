@@ -1,10 +1,11 @@
 import { useCallback, useMemo, useState } from 'react'
 import { Cookie } from '@zero-dependency/cookie'
-import type { KeyOf } from './types.js'
 import type {
   CookieDomainAttributes,
   CookieOptions
 } from '@zero-dependency/cookie'
+
+import type { KeyOf } from './types.js'
 
 /**
  * React hook for managing cookies.

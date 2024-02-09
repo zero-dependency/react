@@ -1,4 +1,5 @@
 import { afterEach, describe } from 'vitest'
+
 import { useCookie } from '../src/useCookie.js'
 import { act, renderHook } from './utils.js'
 

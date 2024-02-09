@@ -1,8 +1,9 @@
-import react from '@vitejs/plugin-react'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
+
 import { dependencies, name } from './package.json'
 
 const entry = fileURLToPath(new URL('src', import.meta.url))

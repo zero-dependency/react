@@ -1,4 +1,5 @@
 import { describe, expect } from 'vitest'
+
 import { useLatest } from '../src/useLatest.js'
 import { renderHook } from './utils.js'
 

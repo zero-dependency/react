@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Logger } from '@zero-dependency/utils'
+import type { DependencyList } from 'react'
+
 import { createProvider } from './createProvider.js'
 import { useDidUpdate } from './useDidUpdate.js'
-import type { DependencyList } from 'react'
 
 const [getLogger, Provider] = createProvider<Logger>('Logger')
 

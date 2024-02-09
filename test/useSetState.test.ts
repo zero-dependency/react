@@ -1,4 +1,5 @@
 import { describe, expect } from 'vitest'
+
 import { useSetState } from '../src/useSetState.js'
 import { act, renderHook } from './utils.js'
 

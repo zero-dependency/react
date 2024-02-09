@@ -1,4 +1,5 @@
 import { describe, expect, vi } from 'vitest'
+
 import { browserPrefix } from '../../utils/src/logger/browser.js'
 import {
   LoggerProvider,

@@ -1,4 +1,5 @@
 import { describe, expect } from 'vitest'
+
 import { useInterval } from '../src/useInterval.js'
 import { renderHook, waitFor } from './utils.js'
 
