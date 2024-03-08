@@ -1,5 +1,15 @@
 # @zero-dependency/react
 
+## 0.21.0
+
+### Minor Changes
+
+- feat: rewrite `ProviderTree`
+
+### Patch Changes
+
+- react@0.0.0
+
 ## 0.20.4
 
 ### Patch Changes
