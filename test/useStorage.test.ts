@@ -1,7 +1,7 @@
 import { useLocalStorage } from '../src/useLocalStorage.js'
 import { useSessionStorage } from '../src/useSessionStorage.js'
 import { useWebStorage } from '../src/useWebStorage.js'
-import { act, renderHook } from './utils.js'
+import { act, renderHook } from './test-utils.js'
 
 describe('useStorage', () => {
   it('should be defined', () => {

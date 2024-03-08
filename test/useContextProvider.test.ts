@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
 import { useContextProvider } from '../src/useContextProvider.js'
-import { renderHook } from './utils.js'
+import { renderHook } from './test-utils.js'
 
 describe('useContextProvider', () => {
   test('should be defined', () => {

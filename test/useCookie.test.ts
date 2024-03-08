@@ -1,7 +1,7 @@
 import { afterEach, describe } from 'vitest'
 
 import { useCookie } from '../src/useCookie.js'
-import { act, renderHook } from './utils.js'
+import { act, renderHook } from './test-utils.js'
 
 interface Cookie {
   theme: 'dark' | 'light'

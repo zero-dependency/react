@@ -1,5 +1,5 @@
 import { namedLazy } from '../src/namedLazy.js'
-import { render, screen, waitFor } from './utils.js'
+import { render, screen, waitFor } from './test-utils.js'
 
 describe('namedLazy', () => {
   it('should be defined', () => {

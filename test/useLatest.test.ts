@@ -1,7 +1,7 @@
 import { describe, expect } from 'vitest'
 
 import { useLatest } from '../src/useLatest.js'
-import { renderHook } from './utils.js'
+import { renderHook } from './test-utils.js'
 
 describe('useLatest', (test) => {
   test('should be defined', () => {

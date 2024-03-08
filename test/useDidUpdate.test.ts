@@ -1,7 +1,7 @@
 import { describe, expect, vi } from 'vitest'
 
 import { useDidUpdate } from '../src/useDidUpdate.js'
-import { renderHook } from './utils.js'
+import { renderHook } from './test-utils.js'
 
 describe('useDidUpdate', (test) => {
   test('should be defined', () => {

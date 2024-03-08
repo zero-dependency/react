@@ -1,7 +1,7 @@
 import { describe, expect } from 'vitest'
 
 import { useToggle } from '../src/useToggle.js'
-import { act, renderHook } from './utils.js'
+import { act, renderHook } from './test-utils.js'
 
 describe('useToggle', (test) => {
   test('should be defined', () => {

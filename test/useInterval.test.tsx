@@ -1,7 +1,7 @@
 import { describe, expect } from 'vitest'
 
 import { useInterval } from '../src/useInterval.js'
-import { renderHook, waitFor } from './utils.js'
+import { renderHook, waitFor } from './test-utils.js'
 
 describe('useInterval', (test) => {
   test('should be defined', () => {

@@ -1,7 +1,7 @@
 import { describe, expect } from 'vitest'
 
 import { useSetState } from '../src/useSetState.js'
-import { act, renderHook } from './utils.js'
+import { act, renderHook } from './test-utils.js'
 
 describe('useSetState', (test) => {
   test('should be defined', () => {

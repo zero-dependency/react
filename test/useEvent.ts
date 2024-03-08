@@ -1,7 +1,7 @@
 import { describe, expect } from 'vitest'
 
 import { useEvent } from '../src/useEvent.js'
-import { renderHook } from './utils.js'
+import { renderHook } from './test-utils.js'
 
 describe('useEvent', (test) => {
   test('should be defined', () => {

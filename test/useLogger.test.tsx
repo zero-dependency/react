@@ -6,7 +6,7 @@ import {
   useLogger,
   useLoggerWithDeps
 } from '../src/useLogger.js'
-import { renderHook } from './utils.js'
+import { renderHook } from './test-utils.js'
 
 const prefix = 'Zero Dependency'
 const styles = browserPrefix(prefix, 'info')

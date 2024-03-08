@@ -1,6 +1,6 @@
 import { App, AppWithError } from '../mock/ProviderContext.js'
 import { createProvider } from '../src/createProvider.js'
-import { fireEvent, render, screen } from './utils.js'
+import { fireEvent, render, screen } from './test-utils.js'
 
 describe('createProvider', () => {
   it('should be defined', () => {
