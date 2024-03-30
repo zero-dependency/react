@@ -1,6 +1,6 @@
 {
   "name": "@zero-dependency/react",
-  "version": "0.21.0",
+  "version": "0.21.1",
   "description": "React hooks and utils",
   "type": "module",
   "types": "./dist/index.d.ts",
@@ -63,9 +63,9 @@
     "vitest": "1.2.2"
   },
   "dependencies": {
-    "@zero-dependency/cookie": "workspace:1.13.5",
+    "@zero-dependency/cookie": "workspace:1.13.6",
     "@zero-dependency/storage": "workspace:1.3.4",
-    "@zero-dependency/utils": "workspace:1.7.5",
+    "@zero-dependency/utils": "workspace:1.7.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
