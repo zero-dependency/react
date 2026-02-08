@@ -1,14 +1,18 @@
 {
   "extends": "@crashmax/tsconfig",
   "compilerOptions": {
+    "resolveJsonModule": true,
     "outDir": "dist",
+    "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "types": [
       "vitest/globals"
     ]
   },
   "include": [
-    "src/*",
-    "test/*",
+    "src",
+    "mock",
+    "test",
+    "vite.config.ts"
   ]
 }

@@ -6,6 +6,6 @@ export default defineProject({
     css: true,
     globals: true,
     setupFiles: './test/setup.ts',
-    environment: 'jsdom'
+    environment: 'happy-dom'
   }
 })

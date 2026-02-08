@@ -3,7 +3,7 @@ import { WebStorage } from '@zero-dependency/storage'
 import type {
   ExcludeFunction,
   StorageOptions
-} from '@zero-dependency/storage/dist/types.js'
+} from '@zero-dependency/storage'
 
 export function useWebStorage<T>(
   key: string,

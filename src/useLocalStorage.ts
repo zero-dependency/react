@@ -1,7 +1,7 @@
 import type {
   ExcludeFunction,
   StorageOptions
-} from '@zero-dependency/storage/dist/types.js'
+} from '@zero-dependency/storage'
 
 import { useWebStorage } from './useWebStorage.js'
 
